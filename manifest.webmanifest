@@ -1,0 +1,23 @@
+{
+  "name": "LifeOS",
+  "short_name": "LifeOS",
+  "description": "Your entire life, one intelligent system: planner, goals, finance, StudyMate and digital wellbeing.",
+  "id": "./",
+  "start_url": "./#/home",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a0c0f",
+  "theme_color": "#0a0c0f",
+  "categories": ["productivity", "education", "finance", "lifestyle"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Planner", "url": "./#/planner", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "StudyMate", "url": "./#/study", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Finance", "url": "./#/finance", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
