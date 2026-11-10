@@ -723,3 +723,17 @@ select { appearance: none; background-image: linear-gradient(45deg, transparent 
 .lesson-page { display: inline-block; margin: 18px 0 6px; padding: 2px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); }
 .lesson-text > .lesson-page:first-child { margin-top: 0; }
 .lesson-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+
+/* --------------------------- StudyMate test builder --------------------------- */
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg-btn { flex: 1 1 0; min-width: 52px; padding: 9px 10px; border-radius: var(--r-sm); border: 1px solid var(--line-strong); background: var(--bg-elev); color: var(--text-soft); font: inherit; font-size: 13.5px; font-weight: 500; cursor: pointer; }
+.seg-btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent-line); color: var(--accent); }
+.q-tags { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 8px; }
+.q-tags:empty { display: none; }
+.chip.diff-easy { color: var(--good); border-color: color-mix(in srgb, var(--good) 35%, transparent); }
+.chip.diff-medium { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 35%, transparent); }
+.chip.diff-hard { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 35%, transparent); }
+.study-q.partial { border-color: color-mix(in srgb, var(--warn) 45%, transparent); }
+.frq-feedback { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; line-height: 1.55; padding: 9px 11px; border-radius: var(--r-sm); background: var(--accent-soft); color: var(--text); }
+.frq-feedback svg { width: 14px; height: 14px; flex: none; margin-top: 2px; color: var(--accent); }
+.frq-list { margin: 4px 0 0; padding-left: 18px; font-size: 12.5px; line-height: 1.55; color: var(--text-soft); }
