@@ -363,6 +363,7 @@ select { appearance: none; background-image: linear-gradient(45deg, transparent 
   display: inline-flex; align-items: center; gap: 6px;
   padding: 3px 9px; border-radius: 99px; font-size: 11.5px; font-weight: 500;
   background: var(--surface-2); border: 1px solid var(--line); color: var(--text-soft);
+  flex-shrink: 0; white-space: nowrap;
 }
 .chip.accent { background: var(--accent-soft); border-color: var(--accent-line); color: var(--accent); }
 .chip.good { background: var(--good-soft); border-color: color-mix(in srgb, var(--good) 30%, transparent); color: var(--good); }
@@ -982,3 +983,10 @@ select { appearance: none; background-image: linear-gradient(45deg, transparent 
 .ss-done-mark { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--good-soft); color: var(--good); }
 .ss-done-mark svg { width: 28px; height: 28px; }
 html[data-motion="reduced"] .ss-dot { animation: none; }
+
+/* ------------------------- LifeOS account (cloud sync) ------------------------- */
+.cloud-card { border-color: color-mix(in srgb, var(--accent) 32%, var(--line));
+  background: radial-gradient(520px 200px at 100% 0%, var(--accent-soft), transparent 70%), var(--surface); }
+.cloud-card .notice .btn-row { flex-wrap: wrap; }
+.cloud-card .chip svg { width: 12px; height: 12px; }
+.welcome-cloud { padding: 12px 14px; border-radius: var(--r-md); border: 1px solid var(--accent-line); background: var(--accent-soft); }
