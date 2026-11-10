@@ -707,3 +707,19 @@ select { appearance: none; background-image: linear-gradient(45deg, transparent 
   #ai-cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
   #ai-cards .stat-meta { overflow-wrap: anywhere; }
 }
+
+/* ---------------------------- StudyMate lesson text ---------------------------- */
+.lesson-text { font-size: 14px; line-height: 1.7; color: var(--text-soft); overflow-wrap: anywhere; position: relative; }
+.lesson-text.collapsed { max-height: 340px; overflow: hidden; }
+.lesson-text.collapsed::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 80px; background: linear-gradient(transparent, var(--surface)); pointer-events: none; }
+.lesson-text p { margin: 0 0 8px; }
+.lesson-text h3, .lesson-text h4, .lesson-text h5, .lesson-text h6 { color: var(--text); margin: 16px 0 6px; line-height: 1.35; }
+.lesson-text h3 { font-size: 17px; } .lesson-text h4 { font-size: 15.5px; } .lesson-text h5, .lesson-text h6 { font-size: 14.5px; }
+.lesson-text ul, .lesson-text ol { margin: 0 0 10px; padding-left: 20px; }
+.lesson-text li { margin: 2px 0; }
+.lesson-text b { color: var(--text); }
+.lesson-text code { font-family: var(--mono); font-size: 12.5px; background: var(--surface-2); padding: 1px 5px; border-radius: 5px; }
+.lesson-text .math { font-family: "Cambria Math", "Times New Roman", serif; font-size: 15px; color: var(--text); white-space: nowrap; }
+.lesson-page { display: inline-block; margin: 18px 0 6px; padding: 2px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); }
+.lesson-text > .lesson-page:first-child { margin-top: 0; }
+.lesson-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
