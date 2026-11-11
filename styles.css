@@ -1029,3 +1029,11 @@ html[data-motion="reduced"] .ss-dot { animation: none; }
   .pack-grid { grid-template-columns: 1fr 1fr; }
   .discount-scale { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* Report an AI answer */
+.ai-report { display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; padding: 2px 4px; border: 0; background: none;
+  color: var(--faint); font: inherit; font-size: 11px; cursor: pointer; border-radius: var(--r-xs); }
+.ai-report:hover { color: var(--text-soft); }
+.ai-report svg { width: 11px; height: 11px; }
+.ai-report-quote { margin: 0; padding: 10px 12px; border-left: 3px solid var(--accent-line); background: var(--surface-2);
+  border-radius: var(--r-xs); font-size: 12.5px; color: var(--text-soft); max-height: 160px; overflow: auto; white-space: pre-wrap; }

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeOS — Delete your account</title>
+  <link rel="stylesheet" href="legal.css" />
+</head>
+<body>
+  <h1>Delete your LifeOS account</h1>
+
+  <p>Deleting your LifeOS account permanently removes, immediately: your account (email and password
+  proof), the encrypted copy of your data on the sync service, your synced photos, and every device's
+  sign-in. This cannot be undone.</p>
+
+  <h2>In the app (instant)</h2>
+  <ol>
+    <li>Open LifeOS and go to <b>Settings</b>.</li>
+    <li>In the <b>LifeOS account</b> card at the top, choose <b>Delete account</b>.</li>
+    <li>Enter your password and confirm.</li>
+  </ol>
+
+  <h2>Here (instant)</h2>
+  <div class="card" id="self-serve">
+    <p style="margin-top:0">Enter the email and password of the account to delete.</p>
+    <form id="del-form" autocomplete="off">
+      <label for="del-email">Email</label>
+      <input id="del-email" type="email" required autocomplete="username" />
+      <label for="del-pw">Password</label>
+      <input id="del-pw" type="password" required autocomplete="current-password" />
+      <button type="submit">Delete my account permanently</button>
+      <div class="msg" id="del-msg" role="status"></div>
+    </form>
+  </div>
+
+  <h2>By email (if you can't sign in)</h2>
+  <p>Email <a href="mailto:pokemonboy0505@gmail.com?subject=Delete%20my%20LifeOS%20account">pokemonboy0505@gmail.com</a>
+  from the address your account uses, with the subject "Delete my LifeOS account". We'll confirm it's you and
+  delete the account and its synced data within 7 days.</p>
+
+  <h2>What's deleted, and what isn't</h2>
+  <ul>
+    <li><b>Deleted:</b> your account, the encrypted synced copy of your records and photos, and all device sign-ins.</li>
+    <li><b>Not touched:</b> data stored on your own devices. Remove it with Settings → Erase, or by uninstalling the app.</li>
+    <li>AI usage counts (no content) expire within 2 days; reports you sent about AI answers are deleted after 180 days.</li>
+    <li>Google Play keeps its own record of purchases. Cancel any subscription in Google Play first — deleting
+      the account does not cancel billing.</li>
+  </ul>
+
+  <p class="links"><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
+
+  <script type="module">
+    const form = document.getElementById('del-form');
+    const msg = document.getElementById('del-msg');
+    const say = (text, kind) => { msg.textContent = text; msg.className = `msg ${kind || ''}`; };
+    let core = null;
+    let base = '';
+    try {
+      core = await import('./cloud-core.js');
+      base = (await import('./sync-url.js')).default;
+    } catch {
+      document.getElementById('self-serve').innerHTML = '<p style="margin:0">Self-service deletion is not available on this copy of the page — use the app or email us (below).</p>';
+    }
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!core || !base) return;
+      const email = document.getElementById('del-email').value.trim().toLowerCase();
+      const password = document.getElementById('del-pw').value;
+      if (!confirm(`Permanently delete the LifeOS account ${email}? This cannot be undone.`)) return;
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      say('Checking your password… (this takes a few seconds)');
+      try {
+        let token = '';
+        const api = core.client(base, () => token);
+        const pre = await api.prelogin(email);
+        const { authKey } = await core.deriveKeys(password, pre.salt, pre.iterations);
+        token = (await api.login({ email, authKey })).token;
+        await api.remove({ authKey });
+        form.reset();
+        say('Your LifeOS account and its synced data have been deleted.', 'ok');
+      } catch (err) {
+        say(err.message || 'Something went wrong. Try again, or email us.', 'err');
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
